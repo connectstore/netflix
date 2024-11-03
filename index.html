@@ -2,12 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="75Ue0EsGUjQiwPkeQQRC-8MzVEMSjtORcLG7unqEOSk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gift Card App Store e iCloud</title>
-    <meta property="og:site_name" content="Connect Store">
-    <meta name="description" content="Compre seu cartão pré-pago na Connect de forma rápida e segura e aproveite créditos para apps, jogos, icloud e mais. Pagamento fácil e seguro via PIX.">
-    <meta name="keywords" content="Gift Card, App Store, Cartão Presente, Comprar Gift Card, Gift Card Online, Gift Card Apple, Gift Card App Store Brasil, Cartão Apple, Saldo App Store, Gift Card Desconto, Cartão Pré-pago, iTunes, Comprar Crédito App Store">
+    <title>Vendas de Gift Card</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +14,7 @@
         }
 
         .toolbar {
-            background: linear-gradient(90deg, #4E75AF, #4CAF50);
+            background: linear-gradient(90deg, #000000, #E20813); /* Azul e Vermelho */
             padding: 0;
             box-sizing: border-box;
         }
@@ -90,9 +86,9 @@
         }
 
         .toolbar-options .option.active {
-            color: #4CAF50;
+            color: #E20813; /* Vermelho */
             font-weight: bold;
-            border-bottom: 2px solid #4CAF50;
+            border-bottom: 2px solid #E20813;
         }
 
         .toolbar-options .option.inactive {
@@ -134,12 +130,12 @@
         }
 
         .card.selected {
-            border: 2px solid #4CAF50;
+            border: 2px solid #E20813; /* Vermelho */
             transform: scale(1.05);
         }
 
         .highlight {
-            background: linear-gradient(90deg, #4E75AF, #4CAF50);
+            background: linear-gradient(90deg, #3C3B6E, #E20813); /* Azul e Vermelho */
             color: #FFFFFF;
             padding: 5px 10px;
             border-radius: 20px;
@@ -242,7 +238,7 @@
             text-align: center;
             font-size: 18px;
             color: #FFFFFF;
-            background-color: #4CAF50;
+            background-color: #4E75AF; /* Vermelho */
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -250,28 +246,28 @@
         }
 
         .button:hover {
-            background-color: #45a049;
+            background-color: #4E75AF; /* Vermelho escuro */
         }
 
         .cancel-button:hover {
-            background-color: #FF0000;
+            background-color: #FF0000; /* Vermelho */
         }
 
         .bottom-button {
             position: relative;
-            background: linear-gradient(90deg, #4E75AF, #4CAF50);
+            background: linear-gradient(90deg, #3C3B6E, #E20813); /* Azul e Vermelho */
             margin-top: 20px;
             margin-bottom: 10px;
         }
 
         .cancel-button {
-            background: linear-gradient(90deg, #E4003A, #C8013A);
+            background: linear-gradient(90deg, #B22234, #FF0000); /* Vermelho e Vermelho escuro */
             margin-top: 10px;
             margin-bottom: 10px;
         }
 
         .pay-button {
-            background: linear-gradient(90deg, #4E75AF, #4CAF50);
+            background: linear-gradient(90deg, #4E75AF, #4CAF50); /* Azul e Vermelho */
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -300,7 +296,7 @@
             <div class="logo">
                 <img src="logo.png" alt="Logo" class="logo">
                 <div>
-                    <div class="title">App Store</div>
+                    <div class="title">Netflix</div>
                     <div class="powered-by">Powered by Connect</div>
                 </div>
             </div>
@@ -317,22 +313,18 @@
     <div class="container">
         <div class="subtitle">Selecione o valor do cartão pré-pago</div>
 
-    <div class="card" onclick="selectCard('value20')">
-        <input type="radio" name="value" id="value20" value="20">
-        <label for="value20" class="value">R$ 20</label>
-        <span class="highlight">Mais escolhido!</span>
-    </div>
-    <div class="card" onclick="selectCard('value40')">
-        <input type="radio" name="value" id="value40" value="40">
-        <label for="value40" class="value">R$ 40</label>
+    <div class="card" onclick="selectCard('value35')">
+        <input type="radio" name="value" id="value35" value="35">
+        <label for="value35" class="value">R$ 35</label>
     </div>
     <div class="card" onclick="selectCard('value50')">
         <input type="radio" name="value" id="value50" value="50">
         <label for="value50" class="value">R$ 50</label>
+        <span class="highlight">Mais escolhido!</span>
     </div>
-    <div class="card" onclick="selectCard('value80')">
-        <input type="radio" name="value" id="value80" value="80">
-        <label for="value80" class="value">R$ 80</label>
+    <div class="card" onclick="selectCard('value70')">
+        <input type="radio" name="value" id="value70" value="70">
+        <label for="value70" class="value">R$ 70</label>
     </div>
 
 <div class="popup" id="paymentPopup">
@@ -346,68 +338,63 @@
 <button class="button bottom-button" id="continueButton">CONTINUAR</button>
 </div>
 <script>
-        // Oculta o botão "Continuar" ao abrir a página.
-        document.getElementById('continueButton').classList.add('hidden');
+    //Oculta o botão "Continuar" ao abrir a página.
+    document.getElementById('continueButton').classList.add('hidden'); // Oculta o botão "Continuar"
+    
+    function selectCard(cardId) {
+        document.getElementById('paymentPopup').classList.remove('active');
+        // Mostra o botão "Continuar" ao selecionar a opção
+        document.getElementById('continueButton').classList.remove('hidden'); 
+        // Remove a classe 'selected' de todos os cards
+        var cards = document.querySelectorAll('.card');
+        cards.forEach(function(card) {
+            card.classList.remove('selected');
+        });
 
-        function selectCard(cardId) {
-            document.getElementById('paymentPopup').classList.remove('active');
-            document.getElementById('continueButton').classList.remove('hidden'); 
-            var cards = document.querySelectorAll('.card');
-            cards.forEach(function(card) {
-                card.classList.remove('selected');
-            });
+        // Adiciona a classe 'selected' ao card clicado
+        var selectedCard = document.querySelector('input#' + cardId);
+        selectedCard.parentElement.classList.add('selected');
+        selectedCard.checked = true;
+    }
 
-            var selectedCard = document.querySelector('input#' + cardId);
-            selectedCard.parentElement.classList.add('selected');
-            selectedCard.checked = true;
+    document.getElementById('continueButton').addEventListener('click', function() {
+        var selectedValue = document.querySelector('input[name="value"]:checked');
+        if (selectedValue) {
+            var value = selectedValue.value;
+            var total = parseInt(value) + 5;
+            document.getElementById('orderTotal').textContent = 'R$ ' + total;
+            document.getElementById('paymentPopup').classList.add('active');
+            document.getElementById('continueButton').classList.add('hidden'); // Oculta o botão "Continuar"
+        } else {
+            alert('Por favor, selecione um valor.');
         }
+    });
 
-        document.getElementById('continueButton').addEventListener('click', function() {
-            var selectedValue = document.querySelector('input[name="value"]:checked');
-            if (selectedValue) {
-                var value = selectedValue.value;
-                var total = parseInt(value) + 5;
-                document.getElementById('orderTotal').textContent = 'R$ ' + total;
-                document.getElementById('paymentPopup').classList.add('active');
-                document.getElementById('continueButton').classList.add('hidden'); // Oculta o botão "Continuar"
-            } else {
-                alert('Por favor, selecione um valor.');
-            }
-        });
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        document.getElementById('paymentPopup').classList.remove('active');
+        document.getElementById('continueButton').classList.remove('hidden'); // Mostra o botão "Continuar"
+    });
 
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            document.getElementById('paymentPopup').classList.remove('active');
-            document.getElementById('continueButton').classList.remove('hidden'); // Mostra o botão "Continuar"
-        });
-        
-       // Antiga forma de pagar
-        /* document.getElementById('payButton').addEventListener('click', function() {
-            var selectedValue = document.querySelector('input[name="value"]:checked').value;
-            var total = parseInt(selectedValue) + 5;
-            
-            // Verifica a URL para determinar se contém "iCloud"
-            var isICloud = window.location.search.includes("product=icloud");
-            var appStoreName = isICloud ? "App Store ICloud" : "App Store"; // Define o nome com base na verificação
-
-            var message = "Quero concluir o meu pedido #APPSTORE" + selectedValue + "\n\nDetalhes do pedido\n1x R$ " + selectedValue + " (" + appStoreName + ")\n1x R$ 5 (Taxa de processamento)";
-            var whatsappUrl = "https://api.whatsapp.com/send?phone=553398801838&text=" + encodeURIComponent(message);
-            window.location.href = whatsappUrl;
-        }); */
-        
-        // Nova forma de pagar
-document.getElementById('payButton').addEventListener('click', function() {
+    // Antiga forma de pagar
+    /*document.getElementById('payButton').addEventListener('click', function() {
+        var selectedValue = document.querySelector('input[name="value"]:checked').value;
+        var total = parseInt(selectedValue) + 5;
+        var message = "Quero concluir o meu pedido #NETFLIX" + selectedValue + "\n\nDetalhes do pedido\n1x R$ " + selectedValue + " (Netflix)\n1x R$ 5 (Taxa de processamento)";
+        var whatsappUrl = "https://api.whatsapp.com/send?phone=553398801838&text=" + encodeURIComponent(message);
+        window.location.href = whatsappUrl;
+    });*/
+    
+     // Nova forma de pagar
+    document.getElementById('payButton').addEventListener('click', function() {
     var selectedValue = document.querySelector('input[name="value"]:checked').value;
     var total = parseInt(selectedValue) + 5;
     
-    // Verifica a URL para determinar se contém "iCloud"
-    var isICloud = window.location.search.includes("product=icloud");
-    var appStoreName = isICloud ? "App Store ICloud" : "App Store"; // Define o nome com base na verificação
-    
     // Constrói a URL de checkout corretamente
-    var checkoutUrl = "https://connectstore.github.io/checkout?payment=" + total + "&product=" + encodeURIComponent(appStoreName) + "&price=" + selectedValue;
+    var checkoutUrl = "https://connectstore.github.io/checkout?payment=" + total + "&product=Netflix" + "&price=" + selectedValue;
     window.location.href = checkoutUrl;
 });
-        
-    </script>
+    
+</script>
+
 </body>
 </html>
